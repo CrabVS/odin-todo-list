@@ -1,4 +1,5 @@
 import './main.css';
+import './taskform.css';
 import createTask from './task/task';
 
 const taskContainerEl = document.getElementById('task-container');

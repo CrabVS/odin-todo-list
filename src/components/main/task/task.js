@@ -4,7 +4,7 @@ const createListeners = function createTaskListeners() {
 
 }
 
-const createContent = function createTaskContent() {
+const createContent = function createTaskContent(taskInfo) {
 
 }
 
@@ -13,7 +13,7 @@ const createTask = function createTask(taskInfo) {
 
     taskEl.classList.add('task');
 
-    createContent();
+    createContent(taskInfo);
     createListeners();
     
     return taskEl;
