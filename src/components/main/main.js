@@ -11,7 +11,40 @@ const addTask = function addTask(taskInfo) {
     taskContainerEl.appendChild(taskEl);
 }
 
+const getFormData = function getFormData() {
+    const taskTitle = document.getElementById('task-title').value;
+    const taskDescription = document.getElementById('task-description').value;
+    const taskDueData = document.getElementById('task-duedate').value;
+    const taskNotes = document.getElementById('task-notes').value;
+    const taskPriority = document.getElementById('task-priority').checked;
+
+    const formData = {
+        title: taskTitle, 
+        description: taskDescription, 
+        duedate: taskDueData, 
+        notes: taskNotes,
+        priority: taskPriority
+    }
+
+    return formData;
+}
+
+const removeTaskForm = function removeTaskForm() {
+    const taskFormEl = document.getElementById('task-form');
+    pageContainerEl.removeChild(taskFormEl);
+}
+
 const addFormListeners = function addTaskFormListeners() {
+    const formBtnEls = document.querySelectorAll('#form-buttons .btn');
+    formBtnEls[0].addEventListener('click', (event) => {
+        event.preventDefault();
+        const formData = getFormData();
+        addTask(formData);
+        removeTaskForm();
+    });
+    formBtnEls[1].addEventListener('click', () => {
+        removeTaskForm();
+    });
 }
 
 const createTaskForm = function createTaskForm() {
