@@ -46,8 +46,17 @@ const deleteCategory = function deleteCategory(category) {
     }
 }
 
-function consoleInfo() {
-    console.log(tasks[currentCategory]);
+const toggleTaskCompleted = function toggleTaskCompleted(taskId) {
+    tasks[currentCategory].forEach(task => {
+        if (task.id === taskId) {
+            task.completed = !task.completed;
+            console.log(task);
+        }
+    });
 }
 
-export { getNewId, addTask, deleteTask, addCategory, deleteCategory, consoleInfo }
+const getTasks = function getTasks() {
+
+}
+
+export { getNewId, addTask, deleteTask, addCategory, deleteCategory, getTasks, toggleTaskCompleted }
