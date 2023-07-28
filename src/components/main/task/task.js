@@ -3,7 +3,7 @@ import deleteIcon from '../../../res/delete.svg';
 import checkIcon from '../../../res/check-circle.svg';
 import editIcon from '../../../res/note-edit.svg';
 
-import { deleteTask, toggleTaskCompleted } from '../taskservice';
+import { deleteTask, toggleTaskCompleted } from '../../../taskservice';
 import { createTaskForm } from '../taskform';
 
 const createListeners = function createTaskListeners(taskEl, taskInfo) {

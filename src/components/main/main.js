@@ -2,7 +2,7 @@ import './main.css';
 import './taskform.css';
 
 import { createTaskForm } from './taskform';
-import { getTasks } from './taskservice';
+import { getTasks } from '../../taskservice';
 import { createNewTask } from './taskform';
 
 const refreshTasks = function refreshTasks() {
