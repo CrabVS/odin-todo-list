@@ -12,7 +12,16 @@ const createListeners = function createTaskListeners(taskEl, taskInfo) {
     iconBtnEls[0].addEventListener('click', () => {
         deleteTask(taskInfo.id);
         taskEl.remove();
-    })
+    });
+
+    iconBtnEls[1].addEventListener('click', () => {
+        taskInfo.completed = !taskInfo.completed;
+        iconBtnEls[1].classList.toggle('task-completed');
+    });
+
+    iconBtnEls[2].addEventListener('click', () => {
+        
+    });
 
 }
 

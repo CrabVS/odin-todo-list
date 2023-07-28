@@ -46,4 +46,8 @@ const deleteCategory = function deleteCategory(category) {
     }
 }
 
-export { getNewId, addTask, deleteTask, addCategory, deleteCategory }
+function consoleInfo() {
+    console.log(tasks[currentCategory]);
+}
+
+export { getNewId, addTask, deleteTask, addCategory, deleteCategory, consoleInfo }
