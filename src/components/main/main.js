@@ -1,7 +1,7 @@
 import './main.css';
 import './taskform.css';
 import createTask from './task/task';
-import { getNewId, addTask } from './taskservice';
+import { getNewId, addTask, addCategory } from './taskservice';
 
 const pageContainerEl = document.getElementById('page-container');
 const taskContainerEl = document.getElementById('task-container');

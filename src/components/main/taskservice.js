@@ -25,8 +25,14 @@ const deleteTask = function deleteTask(taskId) {
     console.log(tasks);
 }
 
-const addCategory = function addCategory() {
-
+const addCategory = function addCategory(category) {
+    const newCategory = category.toLowerCase();
+    if (!tasks.hasOwnProperty(newCategory)) {
+        tasks[newCategory] = [];
+        currentCategory = newCategory;
+    } else {
+        console.log('Error: Category already exists');
+    }
 }
 
 const deleteCategory = function deleteCategory() {
