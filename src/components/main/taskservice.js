@@ -1,4 +1,4 @@
-let tasks = { default: [], default2: ['hi'] }
+let tasks = { default: [] }
 let currentCategory = 'default';
 let displayAll = false;
 
@@ -20,8 +20,7 @@ const deleteTask = function deleteTask(taskId) {
     if (!displayAll) {
         tasks[currentCategory].forEach((task, index) => {
             if (task.id === taskId) {
-                const sliceRange = tasks[currentCategory].length === 1 ? -1 : 1;
-                tasks[currentCategory] = tasks[currentCategory].slice(index, sliceRange);
+                tasks[currentCategory].splice(index, 1);
             }
         });
     }

@@ -3,14 +3,23 @@ import deleteIcon from '../../../res/delete.svg';
 import checkIcon from '../../../res/check-circle.svg';
 import editIcon from '../../../res/note-edit.svg';
 
-const createListeners = function createTaskListeners() {
+import { deleteTask } from '../taskservice';
+
+const createListeners = function createTaskListeners(taskEl, taskInfo) {
+
+    const iconBtnEls = taskEl.querySelectorAll('.task-buttons .icon');
+
+    iconBtnEls[0].addEventListener('click', () => {
+        deleteTask(taskInfo.id);
+        taskEl.remove();
+    })
 
 }
 
 const createIconButtons = function createTaskIconButtons(taskEl) {
-    const iconEl = taskEl.querySelector('.task-buttons');
+    const iconContainerEl = taskEl.querySelector('.task-buttons');
 
-    iconEl.innerHTML = 
+    iconContainerEl.innerHTML = 
     `<img src="${deleteIcon}" alt="delete-icon" class="icon">
     <img src="${checkIcon}" alt="check-icon" class="icon">
     <img src="${editIcon}" alt="edit-icon" class="icon">`;
@@ -38,7 +47,7 @@ const createTask = function createTask(taskInfo) {
     taskEl.classList.add('task');
 
     createContent(taskEl, taskInfo);
-    createListeners();
+    createListeners(taskEl, taskInfo);
     
     return taskEl;
 }
