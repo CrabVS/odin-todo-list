@@ -14,9 +14,23 @@
 }
 
 .task > h6 {
-    flex: 2;
+    flex: 3;
 }
 
 .task > div {
-    flex: 1;
+    flex: 2;
+}
+
+.icon {
+    height: 100%;
+    cursor: icon;
+}
+
+.task-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.task-buttons > img {
+    cursor: pointer;
 }
