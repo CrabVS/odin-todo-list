@@ -38,7 +38,7 @@ const removeTaskForm = function removeTaskForm() {
     pageContainerEl.removeChild(taskFormEl);
 }
 
-const addFormListeners = function addTaskFormListeners() {
+const addNewFormListeners = function addNewTaskFormListeners() {
     const formBtnEls = document.querySelectorAll('#form-buttons .btn');
     formBtnEls[0].addEventListener('click', (event) => {
         event.preventDefault();
@@ -52,7 +52,17 @@ const addFormListeners = function addTaskFormListeners() {
     });
 }
 
-const createTaskForm = function createTaskForm() {
+const addEditFormListeners = function addEditTaskFormListeners() {
+    const formBtnEls = document.querySelectorAll('#form-buttons .btn');
+    formBtnEls[0].addEventListener('click', (event) => {
+
+    });
+    formBtnEls[1].addEventListener('click', () => {
+        
+    });
+}
+
+const createTaskForm = function createTaskForm(taskInfo = {}) {
     const taskFormEl = document.createElement('div');
     taskFormEl.id = 'task-form';
     taskFormEl.innerHTML = 
@@ -87,8 +97,17 @@ const createTaskForm = function createTaskForm() {
     </form>`
 
     pageContainerEl.appendChild(taskFormEl);
+    
+    if (!(Object.keys(taskInfo).length === 0 && taskInfo.constructor === Object)) {
+        addFormValues(taskInfo, taskFormEl);
+        addEditFormListeners();
+    } else {
+        addNewFormListeners();
+    }
+}
 
-    addFormListeners();
+const addFormValues = function addFormValuesFromTask(taskInfo, taskFormEl) {
+
 }
 
 export default createTaskForm;

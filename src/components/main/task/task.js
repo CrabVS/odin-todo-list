@@ -4,6 +4,7 @@ import checkIcon from '../../../res/check-circle.svg';
 import editIcon from '../../../res/note-edit.svg';
 
 import { deleteTask } from '../taskservice';
+import createTaskForm from '../taskform';
 
 const createListeners = function createTaskListeners(taskEl, taskInfo) {
 
@@ -20,7 +21,7 @@ const createListeners = function createTaskListeners(taskEl, taskInfo) {
     });
 
     iconBtnEls[2].addEventListener('click', () => {
-        
+        createTaskForm(taskInfo);
     });
 
 }
