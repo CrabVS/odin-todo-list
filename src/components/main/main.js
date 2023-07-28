@@ -6,7 +6,7 @@ import { getNewId, addTask } from './taskservice';
 const pageContainerEl = document.getElementById('page-container');
 const taskContainerEl = document.getElementById('task-container');
 
-const createTask = function addTask(taskInfo) {
+const createNewTask = function createNewTask(taskInfo) {
     const taskEl = createTask(taskInfo);
 
     taskContainerEl.appendChild(taskEl);
@@ -42,8 +42,8 @@ const addFormListeners = function addTaskFormListeners() {
     formBtnEls[0].addEventListener('click', (event) => {
         event.preventDefault();
         const taskData = getTaskData();
-        addTask(formData);
-        createTask(formData);
+        addTask(taskData);
+        createNewTask(taskData);
         removeTaskForm();
     });
     formBtnEls[1].addEventListener('click', () => {

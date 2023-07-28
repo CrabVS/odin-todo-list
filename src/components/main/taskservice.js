@@ -14,7 +14,15 @@ const addTask = function addTask(taskData) {
 }
 
 const deleteTask = function deleteTask(taskId) {
-
+    if (currentCategory !== 'all') {
+        tasks[currentCategory].forEach((task, index) => {
+            if (task.id === taskId) {
+                const sliceRange = tasks[currentCategory].length === 1 ? -1 : 1;
+                tasks[currentCategory] = tasks[currentCategory].slice(index, sliceRange);
+            }
+        });
+    }
+    console.log(tasks);
 }
 
 const addCategory = function addCategory() {
