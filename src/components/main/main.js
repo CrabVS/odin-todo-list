@@ -5,6 +5,9 @@ import createTask from './task/task';
 const pageContainerEl = document.getElementById('page-container');
 const taskContainerEl = document.getElementById('task-container');
 
+let taskCategories = { default: [] }
+let currentCategory = 'default';
+
 const addTask = function addTask(taskInfo) {
     const taskEl = createTask(taskInfo);
 
@@ -39,6 +42,7 @@ const addFormListeners = function addTaskFormListeners() {
     formBtnEls[0].addEventListener('click', (event) => {
         event.preventDefault();
         const formData = getFormData();
+        taskCategories[currentCategory].push(formData);
         addTask(formData);
         removeTaskForm();
     });
