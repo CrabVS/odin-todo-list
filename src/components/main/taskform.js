@@ -1,7 +1,8 @@
 import './taskform.css';
 
 import createTask from './task/task';
-import { getNewId, addTask } from './taskservice';
+import { getNewId, addTask, updateTask } from './taskservice';
+import { refreshTasks } from './main';
 
 const pageContainerEl = document.getElementById('page-container');
 const taskContainerEl = document.getElementById('task-container');
@@ -12,7 +13,7 @@ const createNewTask = function createNewTask(taskInfo) {
     taskContainerEl.appendChild(taskEl);
 }
 
-const getTaskData = function getTaskData() {
+const createTaskData = function createTaskData() {
     const taskTitle = document.getElementById('task-title').value;
     const taskDescription = document.getElementById('task-description').value;
     const taskDueData = document.getElementById('task-duedate').value;
@@ -33,6 +34,24 @@ const getTaskData = function getTaskData() {
     return formData;
 }
 
+const getFormData = function getFormData() {
+    const taskTitle = document.getElementById('task-title').value;
+    const taskDescription = document.getElementById('task-description').value;
+    const taskDueData = document.getElementById('task-duedate').value;
+    const taskNotes = document.getElementById('task-notes').value;
+    const taskPriority = document.getElementById('task-priority').checked;
+
+    const formData = {
+        title: taskTitle, 
+        description: taskDescription, 
+        duedate: taskDueData, 
+        notes: taskNotes,
+        priority: taskPriority,
+    }
+
+    return formData;
+}
+
 const removeTaskForm = function removeTaskForm() {
     const taskFormEl = document.getElementById('task-form');
     pageContainerEl.removeChild(taskFormEl);
@@ -42,7 +61,7 @@ const addNewFormListeners = function addNewTaskFormListeners() {
     const formBtnEls = document.querySelectorAll('#form-buttons .btn');
     formBtnEls[0].addEventListener('click', (event) => {
         event.preventDefault();
-        const taskData = getTaskData();
+        const taskData = createTaskData();
         addTask(taskData);
         createNewTask(taskData);
         removeTaskForm();
@@ -52,13 +71,17 @@ const addNewFormListeners = function addNewTaskFormListeners() {
     });
 }
 
-const addEditFormListeners = function addEditTaskFormListeners() {
+const addEditFormListeners = function addEditTaskFormListeners(taskId) {
     const formBtnEls = document.querySelectorAll('#form-buttons .btn');
     formBtnEls[0].addEventListener('click', (event) => {
-
+        event.preventDefault();
+        const formData = getFormData();
+        updateTask(formData, taskId);
+        refreshTasks();
+        removeTaskForm();
     });
     formBtnEls[1].addEventListener('click', () => {
-        
+        removeTaskForm();
     });
 }
 
@@ -99,15 +122,25 @@ const createTaskForm = function createTaskForm(taskInfo = {}) {
     pageContainerEl.appendChild(taskFormEl);
     
     if (!(Object.keys(taskInfo).length === 0 && taskInfo.constructor === Object)) {
-        addFormValues(taskInfo, taskFormEl);
-        addEditFormListeners();
+        addFormValues(taskInfo);
+        addEditFormListeners(taskInfo.id);
     } else {
         addNewFormListeners();
     }
 }
 
-const addFormValues = function addFormValuesFromTask(taskInfo, taskFormEl) {
+const addFormValues = function addFormValuesFromTask(taskInfo) {
+    const formTitle = document.getElementById('task-title');
+    const formDescription = document.getElementById('task-description');
+    const formDueDate = document.getElementById('task-duedate');
+    const formNotes = document.getElementById('task-notes');
+    const formPriority = document.getElementById('task-priority');
 
+    formTitle.value = taskInfo.title;
+    formDescription.value = taskInfo.description;
+    formDueDate.value = taskInfo.duedate;
+    formNotes.value = taskInfo.notes;
+    formPriority.checked = taskInfo.priority;
 }
 
 export { createTaskForm, createNewTask };

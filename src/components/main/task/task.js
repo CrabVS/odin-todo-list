@@ -16,7 +16,7 @@ const createListeners = function createTaskListeners(taskEl, taskInfo) {
     });
 
     iconBtnEls[1].addEventListener('click', () => {
-        toggleTaskCompleted();
+        toggleTaskCompleted(taskInfo.id);
         iconBtnEls[1].classList.toggle('task-completed');
     });
 

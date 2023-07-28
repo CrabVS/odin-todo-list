@@ -4,6 +4,16 @@ let displayAll = false;
 
 let currentId = 0;
 
+const getTaskFromCategory = function getTaskFromCategory(taskId) {
+    let targetTask;
+    tasks[currentCategory].forEach(task => {
+        if (task.id === taskId) {
+            targetTask = task;
+        }
+    });
+    return targetTask;
+}
+
 const getNewId = function getNewId() {
     const newId = currentId;
     currentId += 1;
@@ -46,17 +56,31 @@ const deleteCategory = function deleteCategory(category) {
     }
 }
 
-const toggleTaskCompleted = function toggleTaskCompleted(taskId) {
-    tasks[currentCategory].forEach(task => {
-        if (task.id === taskId) {
-            task.completed = !task.completed;
-            console.log(task);
-        }
-    });
+const toggleTaskCompleted = function toggleTaskCompleted(taskId) {    
+    const targetTask = getTaskFromCategory(taskId);
+    targetTask.completed = !targetTask.completed;
 }
 
 const getTasks = function getTasks() {
     return tasks[currentCategory];
 }
 
-export { getNewId, addTask, deleteTask, addCategory, deleteCategory, getTasks, toggleTaskCompleted }
+const updateTask = function updateTask(task, taskId) {
+    const targetTask = getTaskFromCategory(taskId);
+
+    targetTask.title = task.title;
+    targetTask.description = task.description;
+    targetTask.duedate = task.duedate;
+    targetTask.notes = task.notes;
+    targetTask.priority = task.priority;
+}
+
+export { 
+    getNewId, 
+    addTask, 
+    deleteTask, 
+    addCategory, 
+    deleteCategory, 
+    getTasks, 
+    toggleTaskCompleted,
+    updateTask }
