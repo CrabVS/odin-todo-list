@@ -1,5 +1,6 @@
 let tasks = { default: [], default2: ['hi'] }
 let currentCategory = 'default';
+let displayAll = false;
 
 let currentId = 0;
 
@@ -10,11 +11,13 @@ const getNewId = function getNewId() {
 }
 
 const addTask = function addTask(taskData) {
-    tasks[currentCategory].push(taskData);
+    if (!displayAll) {
+        tasks[currentCategory].push(taskData);
+    }
 }
 
 const deleteTask = function deleteTask(taskId) {
-    if (currentCategory !== 'all') {
+    if (!displayAll) {
         tasks[currentCategory].forEach((task, index) => {
             if (task.id === taskId) {
                 const sliceRange = tasks[currentCategory].length === 1 ? -1 : 1;

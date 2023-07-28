@@ -26,6 +26,10 @@
     cursor: icon;
 }
 
+.icon:hover {
+    transform: scale(0.9);
+}
+
 .task-buttons {
     display: flex;
     justify-content: space-evenly;
