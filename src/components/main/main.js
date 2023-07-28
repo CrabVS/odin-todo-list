@@ -6,7 +6,11 @@ import { getTasks } from './taskservice';
 import { createNewTask } from './taskform';
 
 const refreshTasks = function refreshTasks() {
+    const taskContainerEl = document.getElementById('task-container');
     const tasks = getTasks();
+
+    taskContainerEl.innerHTML = ``;
+
     tasks.forEach(task => {
         createNewTask(task);
     });
@@ -24,4 +28,4 @@ const initializeMain = function initializeMain() {
     refreshTasks();
 }
 
-export default initializeMain;
+export { initializeMain, refreshTasks }
