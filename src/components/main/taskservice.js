@@ -22,7 +22,6 @@ const deleteTask = function deleteTask(taskId) {
             }
         });
     }
-    console.log(tasks);
 }
 
 const addCategory = function addCategory(category) {
