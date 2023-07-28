@@ -1,4 +1,4 @@
-let tasks = { default: [] }
+let tasks = { default: [], default2: ['hi'] }
 let currentCategory = 'default';
 
 let currentId = 0;
@@ -35,8 +35,14 @@ const addCategory = function addCategory(category) {
     }
 }
 
-const deleteCategory = function deleteCategory() {
+const deleteCategory = function deleteCategory(category) {
+    if (category !== 'default' && tasks.hasOwnProperty(category)) {
+        delete tasks[category];
 
+        if (currentCategory === category) {
+            currentCategory = 'default';
+        }
+    }
 }
 
 export { getNewId, addTask, deleteTask, addCategory, deleteCategory }
