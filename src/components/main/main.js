@@ -1,27 +1,27 @@
 import './main.css';
 import './taskform.css';
 import createTask from './task/task';
+import { getNewId, addTask } from './taskservice';
 
 const pageContainerEl = document.getElementById('page-container');
 const taskContainerEl = document.getElementById('task-container');
 
-let taskCategories = { default: [] }
-let currentCategory = 'default';
-
-const addTask = function addTask(taskInfo) {
+const createTask = function addTask(taskInfo) {
     const taskEl = createTask(taskInfo);
 
     taskContainerEl.appendChild(taskEl);
 }
 
-const getFormData = function getFormData() {
+const getTaskData = function getTaskData() {
     const taskTitle = document.getElementById('task-title').value;
     const taskDescription = document.getElementById('task-description').value;
     const taskDueData = document.getElementById('task-duedate').value;
     const taskNotes = document.getElementById('task-notes').value;
     const taskPriority = document.getElementById('task-priority').checked;
+    const taskId = getNewId();
 
     const formData = {
+        id: taskId,
         title: taskTitle, 
         description: taskDescription, 
         duedate: taskDueData, 
@@ -41,9 +41,9 @@ const addFormListeners = function addTaskFormListeners() {
     const formBtnEls = document.querySelectorAll('#form-buttons .btn');
     formBtnEls[0].addEventListener('click', (event) => {
         event.preventDefault();
-        const formData = getFormData();
-        taskCategories[currentCategory].push(formData);
+        const taskData = getTaskData();
         addTask(formData);
+        createTask(formData);
         removeTaskForm();
     });
     formBtnEls[1].addEventListener('click', () => {
