@@ -56,7 +56,7 @@ const toggleTaskCompleted = function toggleTaskCompleted(taskId) {
 }
 
 const getTasks = function getTasks() {
-
+    return tasks[currentCategory];
 }
 
 export { getNewId, addTask, deleteTask, addCategory, deleteCategory, getTasks, toggleTaskCompleted }

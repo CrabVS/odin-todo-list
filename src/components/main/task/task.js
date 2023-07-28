@@ -4,7 +4,7 @@ import checkIcon from '../../../res/check-circle.svg';
 import editIcon from '../../../res/note-edit.svg';
 
 import { deleteTask, toggleTaskCompleted } from '../taskservice';
-import createTaskForm from '../taskform';
+import { createTaskForm } from '../taskform';
 
 const createListeners = function createTaskListeners(taskEl, taskInfo) {
 

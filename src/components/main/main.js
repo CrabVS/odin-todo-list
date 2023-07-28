@@ -1,10 +1,15 @@
 import './main.css';
 import './taskform.css';
 
-import createTaskForm from './taskform';
+import { createTaskForm } from './taskform';
+import { getTasks } from './taskservice';
+import { createNewTask } from './taskform';
 
 const refreshTasks = function refreshTasks() {
-    
+    const tasks = getTasks();
+    tasks.forEach(task => {
+        createNewTask(task);
+    });
 }
 
 const initializeListeners = function initializeListeners() {
@@ -16,6 +21,7 @@ const initializeListeners = function initializeListeners() {
 
 const initializeMain = function initializeMain() {
     initializeListeners();
+    refreshTasks();
 }
 
 export default initializeMain;

@@ -110,4 +110,4 @@ const addFormValues = function addFormValuesFromTask(taskInfo, taskFormEl) {
 
 }
 
-export default createTaskForm;
+export { createTaskForm, createNewTask };
