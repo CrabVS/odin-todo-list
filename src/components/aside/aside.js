@@ -2,6 +2,13 @@ import './aside.css';
 import { addProject } from '../../taskservice';
 
 const pageContainerEl = document.getElementById('page-container');
+const projectList = document.getElementById('project-list');
+
+const addProjectToList = function addProjectToList(projectName) {
+    const newProject = document.createElement('li');
+    newProject.innerHTML = `<a>${projectName}</a><button class="btn" tabindex="-1">X</button>`;
+    projectList.appendChild(newProject);
+}
 
 const removeProjectForm = function removeTaskForm() {
     const taskProjectEl = document.getElementById('task-form');
@@ -14,6 +21,7 @@ const addFormListeners = function addNewTaskFormListeners() {
         event.preventDefault();
         const projectName = document.getElementById('project-title').value;
         addProject(projectName);
+        addProjectToList(projectName);
         removeProjectForm();
     });
     formBtnEls[1].addEventListener('click', () => {
