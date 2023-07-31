@@ -75,6 +75,11 @@ const updateTask = function updateTask(task, taskId) {
     targetTask.priority = task.priority;
 }
 
+const addProject = function addProject(project) {
+    tasks[project] = [];
+    currentCategory = project;
+}
+
 export { 
     getNewId, 
     addTask, 
@@ -83,4 +88,5 @@ export {
     deleteCategory, 
     getTasks, 
     toggleTaskCompleted,
-    updateTask }
+    updateTask,
+    addProject }

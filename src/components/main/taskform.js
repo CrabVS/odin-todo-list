@@ -127,8 +127,6 @@ const createTaskForm = function createTaskForm(taskInfo = {}) {
     } else {
         addNewFormListeners();
     }
-
-    taskFormEl.focus();
 }
 
 const addFormValues = function addFormValuesFromTask(taskInfo) {

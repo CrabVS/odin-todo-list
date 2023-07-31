@@ -1,5 +1,6 @@
 import './reset.css';
 import './style.css';
+import './components/main/taskform.css';
 
 import { initializeMain } from './components/main/main';
 import initializeHeader from './components/header/header';

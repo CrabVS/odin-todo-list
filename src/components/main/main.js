@@ -1,9 +1,9 @@
 import './main.css';
-import './taskform.css';
 
 import { createTaskForm } from './taskform';
 import { getTasks } from '../../taskservice';
 import { createNewTask } from './taskform';
+import initializeAside from '../aside/aside';
 
 const refreshTasks = function refreshTasks() {
     const taskContainerEl = document.getElementById('task-container');
@@ -27,6 +27,7 @@ const initializeListeners = function initializeListeners() {
 const initializeMain = function initializeMain() {
     initializeListeners();
     refreshTasks();
+    initializeAside();
 }
 
 export { initializeMain, refreshTasks }
