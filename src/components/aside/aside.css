@@ -4,6 +4,7 @@ aside {
     background-color: red;
     display: flex;
     justify-content: flex-end;
+    overflow: auto;
 }
 
 #aside-content {
@@ -31,8 +32,8 @@ aside {
     margin: 4px 0;
 }
 
-#aside-content ul li:hover {
-    background-color: rgba(0, 0, 0, 0.089);
+#aside-content ul li a:hover {
+    text-decoration: underline;
 }
 
 #aside-content ul li a {
@@ -43,4 +44,14 @@ aside {
     display: flex;
     align-items: center;
     padding-left: 8px;
+}
+
+#aside-content ul:last-child li {
+    display: flex;
+    align-items: center;
+}
+
+#add-project-btn {
+    width: 100%;
+    margin-top: 10px;
 }
