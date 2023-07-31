@@ -19,6 +19,7 @@ const refreshTasks = function refreshTasks() {
 const initializeListeners = function initializeListeners() {
     const addTaskBtnEl = document.getElementById('task-btn');
     addTaskBtnEl.addEventListener('click', () => {
+        addTaskBtnEl.blur();
         createTaskForm();
     });
 }
