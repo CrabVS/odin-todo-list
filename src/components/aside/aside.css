@@ -57,3 +57,7 @@ aside {
     padding: 6px 0;
     border: 1px dashed gray;
 }
+
+#project-list {
+    padding-bottom: 16px;
+}
