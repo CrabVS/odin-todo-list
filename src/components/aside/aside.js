@@ -5,6 +5,11 @@ import { refreshTasks } from '../main/main';
 const pageContainerEl = document.getElementById('page-container');
 const projectList = document.getElementById('project-list');
 
+const switchProjects = function switchProjects(projectName) {
+    setCurrentCategory(projectName);
+    refreshTasks();
+}
+
 const addProjectToList = function addProjectToList(projectName) {
     const newProject = document.createElement('li');
     newProject.innerHTML = `<a>${projectName}</a><button class="btn" tabindex="-1">X</button>`;
@@ -18,10 +23,7 @@ const addProjectToList = function addProjectToList(projectName) {
     });
     
     const projectLinkEl = newProject.querySelector('a');
-    projectLinkEl.addEventListener('click', () => {
-        setCurrentCategory(projectName);
-        refreshTasks();
-    });
+    projectLinkEl.addEventListener('click', () => switchProjects(projectName));
 
 }
 
@@ -69,9 +71,12 @@ const createProjectForm = function createProjectForm() {
 
 const initializeListeners = function initializeListeners() {
     const addProjectBtn = document.getElementById('add-project-btn');
+    const projectDefaultEl = document.getElementById('project-default');
 
     addProjectBtn.addEventListener('click', createProjectForm);
     addProjectBtn.blur();
+
+    projectDefaultEl.addEventListener('click', () => switchProjects('default'));
 }
 
 const initializeAside = function initializeAside() {
