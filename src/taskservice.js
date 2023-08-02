@@ -75,9 +75,9 @@ const updateTask = function updateTask(task, taskId) {
     targetTask.priority = task.priority;
 }
 
-const addProject = function addProject(project) {
-    tasks[project] = [];
-    currentCategory = project;
+const addProject = function addProject(projectName) {
+    tasks[projectName] = [];
+    currentCategory = projectName;
 }
 
 const removeKeyFromTask = function removeKeyFromTask(keyName) {
@@ -93,7 +93,13 @@ const removeKeyFromTask = function removeKeyFromTask(keyName) {
 const removeProject = function removeProject(projectName) {
     const newTasks = removeKeyFromTask(projectName);
     tasks = newTasks;
-    console.log(tasks);
+    if (currentCategory === projectName) {
+        currentCategory = 'default';
+    }
+}
+
+const setCurrentCategory = function setCurrentCategory(categoryName) {
+    currentCategory = categoryName;
 }
 
 
@@ -107,4 +113,5 @@ export {
     toggleTaskCompleted,
     updateTask,
     addProject,
-    removeProject }
+    removeProject,
+    setCurrentCategory }
