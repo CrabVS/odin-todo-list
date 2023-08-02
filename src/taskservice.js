@@ -80,6 +80,23 @@ const addProject = function addProject(project) {
     currentCategory = project;
 }
 
+const removeKeyFromTask = function removeKeyFromTask(keyName) {
+    return Object.keys(tasks).reduce((accumulator, key) => {
+        const value = tasks[key];
+        if (key !== keyName) {
+            accumulator[key] = value;
+        }
+        return accumulator;
+    }, {});
+}
+
+const removeProject = function removeProject(projectName) {
+    const newTasks = removeKeyFromTask(projectName);
+    tasks = newTasks;
+    console.log(tasks);
+}
+
+
 export { 
     getNewId, 
     addTask, 
@@ -89,4 +106,5 @@ export {
     getTasks, 
     toggleTaskCompleted,
     updateTask,
-    addProject }
+    addProject,
+    removeProject }
