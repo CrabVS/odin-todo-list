@@ -1,5 +1,5 @@
 import './aside.css';
-import { addProject, removeProject, setCurrentCategory } from '../../taskservice';
+import { addProject, removeProject, setCurrentCategory, hasProject } from '../../taskservice';
 import { refreshTasks } from '../main/main';
 
 const pageContainerEl = document.getElementById('page-container');
@@ -38,8 +38,10 @@ const addFormListeners = function addNewTaskFormListeners() {
     formBtnEls[0].addEventListener('click', (event) => {
         event.preventDefault();
         const projectName = document.getElementById('project-title').value;
-        addProject(projectName);
-        addProjectToList(projectName);
+        if (!hasProject(projectName)) {
+            addProject(projectName);
+            addProjectToList(projectName);
+        }
         removeProjectForm();
     });
     formBtnEls[1].addEventListener('click', () => {

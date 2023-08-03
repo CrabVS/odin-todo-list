@@ -75,6 +75,12 @@ const updateTask = function updateTask(task, taskId) {
     targetTask.priority = task.priority;
 }
 
+const hasProject = function hasProjectKey(projectName) {
+    if (tasks.hasOwnProperty(projectName)) {
+        return true;
+    } return false;
+}
+
 const addProject = function addProject(projectName) {
     tasks[projectName] = [];
     currentCategory = projectName;
@@ -114,4 +120,5 @@ export {
     updateTask,
     addProject,
     removeProject,
-    setCurrentCategory }
+    setCurrentCategory,
+    hasProject }
