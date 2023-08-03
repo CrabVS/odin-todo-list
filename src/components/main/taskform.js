@@ -25,6 +25,28 @@ const createNewTask = function createNewTask(taskInfo) {
     taskContainerEl.appendChild(taskEl);
 }
 
+const formatTaskData = function formatTaskData(taskData) {
+    const currentDate = formatDate(new Date());
+
+    if (taskData.title === '') {
+        taskData.title = 'Title';
+    }
+
+    if (taskData.taskDescription === '') {
+        taskData.description = 'Description';
+    }
+
+    if (taskData.duedate < currentDate) {
+        taskData.duedate = currentDate;
+    }
+
+    if (taskData.notes === '') {
+        taskData.notes = 'Notes Empty';
+    }
+
+    return taskData;
+}
+
 const createTaskData = function createTaskData() {
     const taskTitle = document.getElementById('task-title').value;
     const taskDescription = document.getElementById('task-description').value;
@@ -43,7 +65,7 @@ const createTaskData = function createTaskData() {
         completed: false
     }
 
-    return formData;
+    return formatTaskData(formData);
 }
 
 const getFormData = function getFormData() {
@@ -61,7 +83,7 @@ const getFormData = function getFormData() {
         priority: taskPriority,
     }
 
-    return formData;
+    return formatTaskData(formData);
 }
 
 const removeTaskForm = function removeTaskForm() {
