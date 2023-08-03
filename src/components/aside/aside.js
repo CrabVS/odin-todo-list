@@ -1,6 +1,6 @@
 import './aside.css';
 import { addProject, removeProject, setCurrentCategory, hasProject } from '../../taskservice';
-import { refreshTasks } from '../main/main';
+import { refreshImportantTasks, refreshTasks, refreshTodayTasks, refreshWeekTasks } from '../main/main';
 
 const pageContainerEl = document.getElementById('page-container');
 const projectList = document.getElementById('project-list');
@@ -74,11 +74,20 @@ const createProjectForm = function createProjectForm() {
 const initializeListeners = function initializeListeners() {
     const addProjectBtn = document.getElementById('add-project-btn');
     const projectDefaultEl = document.getElementById('project-default');
+    const allTasks = document.getElementById('all-tasks');
+    const todayTasks = document.getElementById('today-tasks');
+    const weekTasks = document.getElementById('week-tasks');
+    const importantTasks = document.getElementById('important-tasks');
 
     addProjectBtn.addEventListener('click', createProjectForm);
     addProjectBtn.blur();
 
     projectDefaultEl.addEventListener('click', () => switchProjects('default'));
+
+    allTasks.addEventListener('click', refreshTasks);
+    todayTasks.addEventListener('click', refreshTodayTasks);
+    weekTasks.addEventListener('click', refreshWeekTasks);
+    importantTasks.addEventListener('click', refreshImportantTasks);
 }
 
 const initializeAside = function initializeAside() {

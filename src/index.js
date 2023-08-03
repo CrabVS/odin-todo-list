@@ -8,6 +8,7 @@ import initializeAside from './components/aside/aside';
 
 const initializeScript = function initializeScript() {
     initializeMain();
+    initializeAside();
 }
 
 initializeScript();

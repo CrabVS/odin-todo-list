@@ -7,6 +7,13 @@ import { refreshTasks } from './main';
 const pageContainerEl = document.getElementById('page-container');
 const taskContainerEl = document.getElementById('task-container');
 
+const advanceAndFormatDate = function advanceAndFormatDate(currentDate, daysToAdvance) {
+    let newDate = currentDate;
+    newDate.setDate(newDate.getDate() + daysToAdvance);
+
+    return formatDate(newDate);
+}
+
 const padTo2Digits = function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }
@@ -178,4 +185,4 @@ const addFormValues = function addFormValuesFromTask(taskInfo) {
     formPriority.checked = taskInfo.priority;
 }
 
-export { createTaskForm, createNewTask };
+export { createTaskForm, createNewTask, formatDate, advanceAndFormatDate };
