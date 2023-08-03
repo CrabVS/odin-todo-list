@@ -7,6 +7,18 @@ import { refreshTasks } from './main';
 const pageContainerEl = document.getElementById('page-container');
 const taskContainerEl = document.getElementById('task-container');
 
+const padTo2Digits = function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+  
+const formatDate = function formatDate(date) {
+    return [
+        date.getFullYear(),
+        padTo2Digits(date.getMonth() + 1),
+        padTo2Digits(date.getDate()),
+    ].join('-');
+}
+
 const createNewTask = function createNewTask(taskInfo) {
     const taskEl = createTask(taskInfo);
 
@@ -87,6 +99,7 @@ const addEditFormListeners = function addEditTaskFormListeners(taskId) {
 
 const createTaskForm = function createTaskForm(taskInfo = {}) {
     const taskFormEl = document.createElement('div');
+    const currentDate = formatDate(new Date());
     taskFormEl.id = 'task-form';
     taskFormEl.innerHTML = 
     `<form>
@@ -102,7 +115,7 @@ const createTaskForm = function createTaskForm(taskInfo = {}) {
             </div>
             <div class="form-group">
                 <label for="task-duedate">Due Date</label>
-                <input type="date" id="task-duedate" name="task-duedate">
+                <input type="date" id="task-duedate" name="task-duedate" min="${currentDate}" value="${currentDate}">
             </div>
             <div class="form-group">
                 <label for="task-notes">Notes</label>
