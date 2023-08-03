@@ -52,7 +52,7 @@ h2 {
 
 #content > div {
     background-color: purple;
-    height: calc(80vh - 2.5rem);
+    height: calc(85vh - 2.5rem);
     display: flex;
 }
 
