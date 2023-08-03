@@ -11,7 +11,7 @@
 }
 
 #task-form form {
-    background-color: #fff;
+    background-color: var(--light-black);
     padding: 20px;
     min-width: 300px;
     border-radius: 8px;
@@ -36,9 +36,10 @@
 #task-form .form-group input,
 #task-form .form-group textarea {
     padding: 4px 10px;
-    border: 1px solid #aaa;
+    border: 1px solid var(--dark-black);
     outline: none;
     border-radius: 4px;
+    background-color: var(--gray-color);
 }
 
 #task-form .form-group textarea {
