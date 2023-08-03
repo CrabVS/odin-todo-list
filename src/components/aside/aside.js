@@ -38,7 +38,7 @@ const addFormListeners = function addNewTaskFormListeners() {
     formBtnEls[0].addEventListener('click', (event) => {
         event.preventDefault();
         const projectName = document.getElementById('project-title').value;
-        if (!hasProject(projectName)) {
+        if (!hasProject(projectName) && projectName !== '') {
             addProject(projectName);
             addProjectToList(projectName);
         }
