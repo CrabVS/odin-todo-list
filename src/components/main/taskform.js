@@ -28,6 +28,19 @@ const formatDate = function formatDate(date) {
 
 const createNewTask = function createNewTask(taskInfo) {
     const taskEl = createTask(taskInfo);
+    const taskMainBody = Array.from(taskEl.querySelectorAll('h6'));
+    const taskDescriptionEl = taskEl.querySelector('.task-description');
+
+    taskMainBody.forEach(task => {
+        task.addEventListener('click', () => {
+            taskEl.classList.toggle('expand-task');
+            if (taskDescriptionEl.textContent === '') {
+                taskDescriptionEl.textContent = taskInfo.description;
+            } else {
+                taskDescriptionEl.textContent = '';
+            }
+        });
+    });
 
     taskContainerEl.appendChild(taskEl);
 }
@@ -136,11 +149,11 @@ const createTaskForm = function createTaskForm(taskInfo = {}) {
             <legend>Task Creator</legend>
             <div class="form-group">
                 <label for="task-title">Title</label>
-                <input type="text" id="task-title" name="task-title">
+                <input type="text" id="task-title" name="task-title" maxlength='24'>
             </div>
             <div class="form-group">
                 <label for="task-description">Description</label>
-                <textarea name="task-description" id="task-description" cols="20" rows="4"></textarea>
+                <textarea name="task-description" id="task-description" cols="20" rows="4" maxlength='50'></textarea>
             </div>
             <div class="form-group">
                 <label for="task-duedate">Due Date</label>
@@ -148,7 +161,7 @@ const createTaskForm = function createTaskForm(taskInfo = {}) {
             </div>
             <div class="form-group">
                 <label for="task-notes">Notes</label>
-                <input type="text" id="task-notes" name="task-notes">
+                <input type="text" id="task-notes" name="task-notes" maxlength='24'>
             </div>
             <div class="form-group" id="priority-box">
                 <label for="task-priority">Priority</label>

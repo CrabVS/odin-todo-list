@@ -37,10 +37,13 @@ const createIconButtons = function createTaskIconButtons(taskEl) {
 
 const createContent = function createTaskContent(taskEl, taskInfo) {
     taskEl.innerHTML = 
-    `<h6>Title</h6>
-    <h6>Notes</h6>
-    <h6>00-00-0000</h6>
-    <div class="task-buttons"></div>`
+    `<div class='task-content'>
+        <h6>Title</h6>
+        <h6>Notes</h6>
+        <h6>00-00-0000</h6>
+        <div class="task-buttons"></div>
+    </div>
+    <div class='task-description'></div>`
 
     const headerEls = taskEl.querySelectorAll('h6');
     headerEls[0].textContent = taskInfo.title;
@@ -48,7 +51,6 @@ const createContent = function createTaskContent(taskEl, taskInfo) {
     headerEls[2].textContent = taskInfo.duedate;
 
     createIconButtons(taskEl);
-
 }
 
 const createTask = function createTask(taskInfo) {
