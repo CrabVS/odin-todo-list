@@ -1,6 +1,6 @@
 import './aside.css';
-import { addProject, removeProject, setCurrentCategory, hasProject } from '../../taskservice';
-import { refreshImportantTasks, refreshTasks, refreshTodayTasks, refreshWeekTasks } from '../main/main';
+import { addProject, removeProject, setCurrentCategory, hasProject, getCurrentCategory } from '../../taskservice';
+import { refreshImportantTasks, refreshTasks, refreshTodayTasks, refreshWeekTasks, updateMainHeader } from '../main/main';
 
 const pageContainerEl = document.getElementById('page-container');
 const projectList = document.getElementById('project-list');
@@ -8,6 +8,7 @@ const projectList = document.getElementById('project-list');
 const switchProjects = function switchProjects(projectName) {
     setCurrentCategory(projectName);
     refreshTasks();
+    updateMainHeader(projectName);
 }
 
 const addProjectToList = function addProjectToList(projectName) {
@@ -20,6 +21,7 @@ const addProjectToList = function addProjectToList(projectName) {
         newProject.remove();
         removeProject(projectName);
         refreshTasks();
+        updateMainHeader(getCurrentCategory());
     });
     
     const projectLinkEl = newProject.querySelector('a');
@@ -41,6 +43,7 @@ const addFormListeners = function addNewTaskFormListeners() {
         if (!hasProject(projectName) && projectName !== '') {
             addProject(projectName);
             addProjectToList(projectName);
+            updateMainHeader(projectName);
         }
         removeProjectForm();
     });

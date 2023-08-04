@@ -5,6 +5,12 @@ import { createTaskForm, createNewTask, formatDate, advanceAndFormatDate } from 
 
 const taskContainerEl = document.getElementById('task-container');
 
+const updateMainHeader = function updateMainHeader(newHeader) {
+    const mainHeader = document.querySelector('main h2');
+
+    mainHeader.textContent = newHeader;
+}
+
 const refreshTasks = function refreshTasks() {
     const tasks = getTasks();
 
@@ -64,4 +70,4 @@ const initializeMain = function initializeMain() {
     refreshTasks();
 }
 
-export { initializeMain, refreshTasks, refreshTodayTasks, refreshWeekTasks, refreshImportantTasks }
+export { initializeMain, refreshTasks, refreshTodayTasks, refreshWeekTasks, refreshImportantTasks, updateMainHeader }

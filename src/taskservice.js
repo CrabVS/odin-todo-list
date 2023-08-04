@@ -108,6 +108,10 @@ const setCurrentCategory = function setCurrentCategory(categoryName) {
     currentCategory = categoryName;
 }
 
+const getCurrentCategory = function getCurrentCategory() {
+    return currentCategory;
+}
+
 
 export { 
     getNewId, 
@@ -121,4 +125,5 @@ export {
     addProject,
     removeProject,
     setCurrentCategory,
-    hasProject }
+    hasProject,
+    getCurrentCategory }
