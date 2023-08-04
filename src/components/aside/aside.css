@@ -62,3 +62,23 @@ aside {
 #project-list {
     padding-bottom: 16px;
 }
+
+@media (max-width: 1200px) {
+    aside {
+        width: 30%;
+    }
+}
+
+@media (max-width: 900px) {
+    aside {
+        width: 0%;
+        z-index: -100;
+    }
+
+    aside.expand {
+        width: 100%;
+        z-index: 10;
+        justify-content: center;
+    }
+    
+}

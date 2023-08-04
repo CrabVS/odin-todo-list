@@ -73,12 +73,6 @@ h2 {
     display: flex;
 }
 
-header {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-}
-
 footer {
     position: absolute;
     bottom: 0;

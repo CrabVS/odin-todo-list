@@ -82,8 +82,10 @@ const initializeListeners = function initializeListeners() {
     const weekTasks = document.getElementById('week-tasks');
     const importantTasks = document.getElementById('important-tasks');
 
-    addProjectBtn.addEventListener('click', createProjectForm);
-    addProjectBtn.blur();
+    addProjectBtn.addEventListener('click', () => {
+        createProjectForm();
+        addProjectBtn.blur();
+    });
 
     projectDefaultEl.addEventListener('click', () => switchProjects('default'));
 
