@@ -17,7 +17,7 @@ const createListeners = function createTaskListeners(taskEl, taskInfo) {
 
     iconBtnEls[1].addEventListener('click', () => {
         toggleTaskCompleted(taskInfo.id);
-        iconBtnEls[1].classList.toggle('task-completed');
+        taskEl.classList.toggle('task-completed');
     });
 
     iconBtnEls[2].addEventListener('click', () => {
@@ -60,6 +60,14 @@ const createTask = function createTask(taskInfo) {
 
     createContent(taskEl, taskInfo);
     createListeners(taskEl, taskInfo);
+
+    if (taskInfo.priority) {
+        taskEl.classList.add('task-priority');
+    }
+
+    if (taskInfo.completed) {
+        taskEl.classList.add('task-completed');
+    }
     
     return taskEl;
 }

@@ -61,3 +61,11 @@
     padding-bottom: 10px;
     height: 100%;
 }
+
+.task-priority {
+    border: 2px solid var(--yellow-color);
+}
+
+.task-completed .task-buttons > img:nth-child(2) {
+    filter: invert(96%) sepia(13%) saturate(1290%) hue-rotate(1deg) brightness(91%) contrast(93%);
+}

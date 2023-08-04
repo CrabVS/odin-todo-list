@@ -112,7 +112,6 @@ const getCurrentCategory = function getCurrentCategory() {
     return currentCategory;
 }
 
-
 export { 
     getNewId, 
     addTask, 
